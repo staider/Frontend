@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<!-- Favicon -->
+<link rel="shortcut icon" href="./img/svg/logo.svg" type="image/x-icon" />
+<!-- Custom styles -->
+<link th:href="@{/css/style.css}" rel="stylesheet" />
+<link th:href="@{/css/main.css}" rel="stylesheet" />
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css" />
+<title>MyBancaApp</title>
+</head>
+<body class="bg-light">
+	<div class="page-flex">
+		<div th:replace="fragments/sidebar :: sidebarCS"></div>
+		<div class="main-wrapper">
+			<div class="row justify-content-center">
+			<div class="col-md-3">
+				<div class="card card-body">
+					<span th:if="${session.arrendador!=null}">Bienvenido<span class="font-italic" th:text="${session.arrendador.nomArrendador}"></span></span>
+					<form th:action="@{/logout}"method="post">
+						<button type="submit"class="btn btn-primary mt-3">Salir</button>
+					</form>
+				</div>
+			</div>
+			</div>
+			<div class="container">
+    		<form th:action="@{/habitacion/registrar}" method="post" th:object="${habitacion}">
+    			<div class="form-group">
+    				<label for="idHabitacion">ID:</label>
+    				<input type="text" class="form-control" th:field="*{idHabitacion}"></input>
+    				
+    				<div class="form-group">
+    					<label for="nombre">Descripcion:</label>
+    					<input type="text" class="form-control" th:field="*{desHabitacion}" id="descripcion"></input>
+
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('desHabitacion')}" 
+								th:errors="*{desHabitacion}">
+						</div>    					
+    				</div>
+    				      
+					<div class="form-group">
+    					<label for="nombre">RUC</label>
+    					<select class="form-control" th:field="*{distrito.idDistrito}">
+    						<option th:each="d: ${listaDistritos}"
+    							th:value="${d.idDistrito}"
+    							th:text="${d.nomDistrito}"
+    							th:selected="(${d.idDistrito} == *{distrito.idDistrito})">
+    						</option>    					
+    					</select>
+    				</div>
+    				<div class="form-group">
+    					<label for="nombre">Direccion</label>
+    					<input type="text" class="form-control" th:field="*{direccion}" id="direccion"></input>
+
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('direccion')}" 
+								th:errors="*{direccion}">
+						</div>    					
+    				</div>
+    				<div class="form-group">
+    					<label for="nombre">Cliente</label>
+    					<select class="form-control" th:field="*{arrendador.idArrendador}">
+    						<option th:each="d: ${listaArrendadores}"
+    							th:value="${d.idArrendador}"
+    							th:text="${d.nomArrendador}"
+    							th:selected="(${d.idArrendador} == *{arrendador.idArrendador})">
+    						</option>    					
+    					</select>
+    				</div>    
+   				
+    			</div>
+    			<button type="submit" class="btn btn-primary">Guardar</button>
+    			<a href="/habitacion/listar" class="btn btn-danger">Cancelar</a>
+    		</form>
+    	</div>
+    	<div th:replace="fragments/footer :: footer"></div>
+		</div>
+	</div>
+</body>
+</html>
+

@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html><head th:replace="layouts/base-layout :: head">
+		<!-- Custom styles -->
+<link th:href="@{/css/style.css}" rel="stylesheet" />
+<link th:href="@{/css/main.css}" rel="stylesheet" />
+<link rel="stylesheet"
+	href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.6.1/font/bootstrap-icons.css" />
+
+		<!-- Website CSS style -->
+		<link href="css/bootstrap.min.css" rel="stylesheet">
+
+		<!-- Website Font style -->
+	    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+		<link rel="stylesheet" href="style.css">
+		<!-- Google Fonts -->
+		<link href='https://fonts.googleapis.com/css?family=Passion+One' rel='stylesheet' type='text/css'>
+		<link href='https://fonts.googleapis.com/css?family=Oxygen' rel='stylesheet' type='text/css'>
+</head>
+
+	<body class="bg-light">
+	<div  class="page-flex">
+    			<div class="main-wrapper">
+    			<div class="container">
+    		<form th:action="@{/auth/registroA}" method="post" th:object="${arrendador}">
+    		
+    		<nav class="navbar navbar-expand-md navbar-dark bg-primary sticky-top">
+		<div class="container-fluid">
+			<a class="navbar-brand" href="#"> <img
+				th:src="@{/imagenes/1.png}" alt="logo-share" height="80" />
+				
+			</a>
+			<h3 class="principal-logotext text-white">
+					My Banca APP
+			</h3>
+			<!--Navbar:button-collapse-->
+			<button class="navbar-toggler" type="button"
+				data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+				aria-controls="navbarSupportedContent" aria-expanded="false"
+				aria-label="Toggle navigation">
+				<span class="navbar-toggler-icon"></span>
+			</button>
+			<!--Navbar:items-menu-->
+			<div class="collapse navbar-collapse justify-content-end" id="navbarSupportedContent">
+				
+				<ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+					
+					<li class="nav-item ms-3"><a
+						th:href="@{/auth/login}">
+							<button type="button"
+								class="btn btn-dark button text-uppercase btn-padding-x-sm fw-bold">
+								Login</button>
+					</a></li>
+				</ul>
+			</div>
+		</div>
+	</nav>
+    			<div class="form-group">
+    				<label for="idArrendador">ID:</label>
+    				<input type="text" class="form-control" th:field="*{idusuario}"></input>
+    				
+    				<div class="form-group">
+    					<label for="nombre">NOMBRE:</label>
+    					<input type="text" class="form-control" th:field="*{nomusuario}" id="nombre"></input>
+
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('nomusuario')}" 
+								th:errors="*{nomusuario}">
+						</div>
+    				</div>
+    				<div class="form-group">
+    					<label for="nombre">DNI:</label>
+    					<input type="text" class="form-control" th:field="*{dniusuario}" id="nombre"></input>
+
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('dniusuario')}" 
+								th:errors="*{dniusuario}">
+						</div>
+    				</div>
+    				<div class="form-group">
+    					<label for="nombre">Edad:</label>
+    					<input type="text" class="form-control" th:field="*{edadusuario}" id="nombre"></input>
+
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('edadusuario')}" 
+								th:errors="*{edadusuario}">
+						</div>
+    				</div>
+    				<div class="form-group">
+    					<label for="nombre">Celular:</label>
+    					<input type="text" class="form-control" th:field="*{celusuario}" id="nombre"></input>
+
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('celusuario')}" 
+								th:errors="*{celusuario}">
+						</div>
+    				</div>
+    				<div class="form-group">
+    					<label for="nombre">Email:</label>
+    					<input type="text" class="form-control" th:field="*{emailusuario}" id="nombre"></input>
+
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('emailusuario')}" 
+								th:errors="*{emailusuario}">
+						</div>
+    				</div>
+    					<div class="form-group">
+    					<label for="nombre">UsuarioNick:</label>
+    					<input type="text" class="form-control" th:field="*{username}" id="nombre"></input>
+
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('username')}" 
+								th:errors="*{username}">
+						</div>
+    				</div>
+    				<div class="form-group">
+    					<label for="nombre">Password:</label>
+    					<input type="password" class="form-control" th:field="*{password}" id="nombre"></input>
+
+						<div 	class="alert alert-danger" th:if="${#fields.hasErrors('password')}" 
+								th:errors="*{password}">
+						</div>
+    				</div>
+    			
+    			</div>
+    			<button type="submit" class="btn btn-primary">Guardar</button>
+    			<a href="/arrendador/listar" class="btn btn-danger">Cancelar</a>
+    		</form>
+    		</div>
+    		
+    	</div>
+    	<div th:replace="fragments/footer :: footer"></div>
+    	</div>	
+	</body>
+<style>
+
+#playground-container {
+    height: 500px;
+    overflow: hidden !important;
+    -webkit-overflow-scrolling: touch;
+}
+body, html{
+     height: 100%;
+ 	background-repeat: no-repeat;
+ 	background:url(https://i.ytimg.com/vi/4kfXjatgeEU/maxresdefault.jpg);
+ 	font-family: 'Oxygen', sans-serif;
+	    background-size: cover;
+}
+
+.main{
+ 	margin:50px 15px;
+}
+
+h1.title { 
+	font-size: 50px;
+	font-family: 'Passion One', cursive; 
+	font-weight: 400; 
+}
+
+hr{
+	width: 10%;
+	color: #fff;
+}
+
+.form-group{
+	margin-bottom: 15px;
+}
+
+label{
+	margin-bottom: 15px;
+}
+
+input,
+input::-webkit-input-placeholder {
+    font-size: 11px;
+    padding-top: 3px;
+}
+
+.main-login{
+ 	background-color: #fff;
+    /* shadows and rounded borders */
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+    -moz-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    -webkit-box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+    box-shadow: 0px 2px 2px rgba(0, 0, 0, 0.3);
+
+}
+.form-control {
+    height: auto!important;
+padding: 8px 12px !important;
+}
+.input-group {
+    -webkit-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.21)!important;
+    -moz-box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.21)!important;
+    box-shadow: 0px 2px 5px 0px rgba(0,0,0,0.21)!important;
+}
+#button {
+    border: 1px solid #ccc;
+    margin-top: 28px;
+    padding: 6px 12px;
+    color: #666;
+    text-shadow: 0 1px #fff;
+    cursor: pointer;
+    -moz-border-radius: 3px 3px;
+    -webkit-border-radius: 3px 3px;
+    border-radius: 3px 3px;
+    -moz-box-shadow: 0 1px #fff inset, 0 1px #ddd;
+    -webkit-box-shadow: 0 1px #fff inset, 0 1px #ddd;
+    box-shadow: 0 1px #fff inset, 0 1px #ddd;
+    background: #f5f5f5;
+    background: -moz-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%, #f5f5f5), color-stop(100%, #eeeeee));
+    background: -webkit-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
+    background: -o-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
+    background: -ms-linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
+    background: linear-gradient(top, #f5f5f5 0%, #eeeeee 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#f5f5f5', endColorstr='#eeeeee', GradientType=0);
+}
+.main-center{
+ 	margin-top: 30px;
+ 	margin: 0 auto;
+ 	max-width: 400px;
+    padding: 10px 40px;
+	background:#009edf;
+	    color: #FFF;
+    text-shadow: none;
+	-webkit-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+-moz-box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+box-shadow: 0px 3px 5px 0px rgba(0,0,0,0.31);
+
+}
+span.input-group-addon i {
+    color: #009edf;
+    font-size: 17px;
+}
+
+.login-button{
+	margin-top: 5px;
+}
+
+.login-register{
+	font-size: 11px;
+	text-align: center;
+}
+</style>
+</html>
